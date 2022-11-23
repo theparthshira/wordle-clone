@@ -1,0 +1,52 @@
+.heading-name {
+  text-align: center;
+}
+
+.word-cont {
+}
+
+.box-cont {
+  display: flex;
+  margin-top: 10px;
+}
+
+.box-empty {
+  border: solid rgb(207, 202, 202) 2px;
+  height: 50px;
+  width: 50px;
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 25px;
+}
+
+.box-yellow {
+  border: solid rgb(207, 202, 202) 2px;
+  height: 50px;
+  width: 50px;
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 25px;
+  background-color: yellow;
+}
+
+.box-green {
+  border: solid rgb(207, 202, 202) 2px;
+  height: 50px;
+  width: 50px;
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 25px;
+  background-color: green;
+}
