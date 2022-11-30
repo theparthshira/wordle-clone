@@ -146,6 +146,9 @@ const MainApp = () => {
       }
 
       if (word === todayWord) {
+        setTimeout(() => {
+          alert("You guessed it correct.");
+        }, 1000);
         setCurr(10);
       }
 
@@ -163,6 +166,18 @@ const MainApp = () => {
         setCheck5({ yellow, green });
       } else if (curr === 6) {
         setCheck6({ yellow, green });
+      }
+
+      if (curr === 6) {
+        if (word === todayWord) {
+          setTimeout(() => {
+            alert("You guessed it correct.");
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            alert(`Today's word is ${todayWord}`);
+          }, 1000);
+        }
       }
     }
   };

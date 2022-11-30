@@ -24,7 +24,7 @@ const Word = ({ input_char, check }) => {
             backgroundColor:
               qq1 === "green" ? "green" : qq1 === "yellow" ? "yellow" : "",
           }}
-          className="box-empty"
+          className={input_char.length === 1 ? "box-full1" : "box-empty"}
         >
           {input_char.length >= 1 && input_char[0]}
         </div>
@@ -36,7 +36,7 @@ const Word = ({ input_char, check }) => {
               ? "yellow"
               : "",
           }}
-          className="box-empty"
+          className={input_char.length === 2 ? "box-full2" : "box-empty"}
         >
           {input_char.length >= 2 && input_char[1]}
         </div>
@@ -48,7 +48,7 @@ const Word = ({ input_char, check }) => {
               ? "yellow"
               : "",
           }}
-          className="box-empty"
+          className={input_char.length === 3 ? "box-full3" : "box-empty"}
         >
           {input_char.length >= 3 && input_char[2]}
         </div>
@@ -60,7 +60,7 @@ const Word = ({ input_char, check }) => {
               ? "yellow"
               : "",
           }}
-          className="box-empty"
+          className={input_char.length === 4 ? "box-full4" : "box-empty"}
         >
           {input_char.length >= 4 && input_char[3]}
         </div>
@@ -72,7 +72,7 @@ const Word = ({ input_char, check }) => {
               ? "yellow"
               : "",
           }}
-          className="box-empty"
+          className={input_char.length === 5 ? "box-full5" : "box-empty"}
         >
           {input_char.length >= 5 && input_char[4]}
         </div>
