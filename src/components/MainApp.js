@@ -3,6 +3,7 @@ import Keyboard from "./Keyboard";
 import Word from "./Word";
 import "./MainApp.css";
 import { getWord, checkWord } from "./data";
+import Result from "./Result";
 
 const MainApp = () => {
   const [input1, setInput1] = useState("");
@@ -15,6 +16,7 @@ const MainApp = () => {
   const [key, setKey] = useState(null);
   const [todayWord, setTodayWord] = useState(null);
   const [clickChar, setClickChar] = useState(null);
+  const [wrong, setWrong] = useState(null);
 
   const [check1, setCheck1] = useState(null);
   const [check2, setCheck2] = useState(null);
@@ -23,12 +25,17 @@ const MainApp = () => {
   const [check5, setCheck5] = useState(null);
   const [check6, setCheck6] = useState(null);
   const [mp1, setMp1] = useState({});
+  const [stat, setStat] = useState(false);
 
   useEffect(() => {
     const word = getWord();
     setTodayWord(word);
     console.log(word);
   }, []);
+
+  useEffect(() => {
+    console.log(wrong);
+  }, [wrong]);
 
   useEffect(() => {
     if (key?.key === " ") return;
@@ -179,6 +186,11 @@ const MainApp = () => {
           }, 1000);
         }
       }
+    } else {
+      setWrong(curr);
+      setTimeout(() => {
+        setWrong(0);
+      }, 500);
     }
   };
 
@@ -287,20 +299,62 @@ const MainApp = () => {
       }}
       onKeyPress={(e) => setKey(e)}
     >
-      <div className="main-div">
+      <div className={wrong === curr ? "main-div shake" : "main-div"}>
         <div className="word-cont">
-          <Word input_char={input1} check={check1} />
-          <Word input_char={input2} check={check2} />
-          <Word input_char={input3} check={check3} />
-          <Word input_char={input4} check={check4} />
-          <Word input_char={input5} check={check5} />
-          <Word input_char={input6} check={check6} />
+          <Word
+            input_char={input1}
+            check={check1}
+            curr={curr}
+            ind={1}
+            wrong={wrong}
+          />
+          <Word
+            input_char={input2}
+            check={check2}
+            curr={curr}
+            ind={2}
+            wrong={wrong}
+          />
+          <Word
+            input_char={input3}
+            check={check3}
+            curr={curr}
+            ind={3}
+            wrong={wrong}
+          />
+          <Word
+            input_char={input4}
+            check={check4}
+            curr={curr}
+            ind={4}
+            wrong={wrong}
+          />
+          <Word
+            input_char={input5}
+            check={check5}
+            curr={curr}
+            ind={5}
+            wrong={wrong}
+          />
+          <Word
+            input_char={input6}
+            check={check6}
+            curr={curr}
+            ind={6}
+            wrong={wrong}
+          />
         </div>
       </div>
       <br />
       <div className="main-bot">
         <Keyboard mp={mp1} clickChar={clickChar} setClickChar={setClickChar} />
       </div>
+      <button onClick={() => setStat((prev) => !prev)}>Stats</button>
+      {stat && (
+        <div className="main-ovly ">
+          <Result todayWord={todayWord} />
+        </div>
+      )}
     </div>
   );
 };

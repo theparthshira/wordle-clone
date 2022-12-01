@@ -19,10 +19,11 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
                   check === 1
                     ? "green"
                     : check === -1
-                    ? "yellow"
+                    ? "rgb(155, 155, 49)"
                     : check === 0
                     ? "grey"
                     : "",
+                cursor: "pointer",
               }}
               id={ind}
               className="col1-item"
@@ -47,10 +48,11 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
                   check === 1
                     ? "green"
                     : check === -1
-                    ? "yellow"
+                    ? "rgb(155, 155, 49)"
                     : check === 0
                     ? "grey"
                     : "",
+                cursor: "pointer",
               }}
               id={ind}
               className="col1-item"
@@ -66,13 +68,14 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
       </div>
       <div className="col1">
         <div
-          className="spcl-back"
+          className="spcl-entr"
+          style={{ cursor: "pointer" }}
           onClick={() => {
             const random = Math.random();
-            setClickChar({ random, char: "Back" });
+            setClickChar({ random, char: "Enter" });
           }}
         >
-          {"BACK"}
+          {"ENTER"}
         </div>
         {col3.map((val, ind) => {
           const char = val.toLowerCase();
@@ -84,10 +87,11 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
                   check === 1
                     ? "green"
                     : check === -1
-                    ? "yellow"
+                    ? "rgb(155, 155, 49)"
                     : check === 0
                     ? "grey"
                     : "",
+                cursor: "pointer",
               }}
               id={ind}
               className="col1-item"
@@ -101,13 +105,14 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
           );
         })}
         <div
-          className="spcl-entr"
+          className="spcl-back"
+          style={{ cursor: "pointer" }}
           onClick={() => {
             const random = Math.random();
-            setClickChar({ random, char: "Enter" });
+            setClickChar({ random, char: "Back" });
           }}
         >
-          {"ENTER"}
+          {"BACK"}
         </div>
       </div>
     </div>

@@ -6,7 +6,8 @@
 }
 
 .col1-item {
-  border: 1px black solid;
+  border: 1px rgb(207, 205, 205) solid;
+  background-color: rgb(207, 205, 205);
   width: 30px;
   height: 50px;
   margin-left: 3px;
@@ -18,7 +19,8 @@
 }
 
 .spcl-back {
-  border: 1px black solid;
+  border: 1px rgb(207, 205, 205) solid;
+  background-color: rgb(207, 205, 205);
   width: 55px;
   height: 50px;
   margin-left: 3px;
@@ -30,7 +32,8 @@
 }
 
 .spcl-entr {
-  border: 1px black solid;
+  border: 1px rgb(207, 205, 205) solid;
+  background-color: rgb(207, 205, 205);
   width: 55px;
   height: 50px;
   margin-left: 3px;
