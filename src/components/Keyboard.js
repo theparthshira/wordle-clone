@@ -14,6 +14,7 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
           const check = mp[char];
           return (
             <div
+              key={ind}
               style={{
                 backgroundColor:
                   check === 1
@@ -43,6 +44,7 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
           const check = mp[char];
           return (
             <div
+              key={ind}
               style={{
                 backgroundColor:
                   check === 1
@@ -82,6 +84,7 @@ const Keyboard = ({ mp, clickChar, setClickChar }) => {
           const check = mp[char];
           return (
             <div
+              key={ind}
               style={{
                 backgroundColor:
                   check === 1

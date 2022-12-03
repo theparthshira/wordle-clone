@@ -143,8 +143,6 @@
 }
 
 .main-ovly {
-  width: 30%;
-  height: 80%;
   background-color: white;
 
   position: absolute;
@@ -155,4 +153,24 @@
 
   margin: auto;
   box-shadow: 5px 5px 50px grey;
+}
+
+@media (width > 600px) {
+  .main-ovly {
+    width: 30%;
+    height: 80%;
+  }
+}
+
+@media (width <= 600px) {
+  .main-ovly {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+@media (height < 756px) {
+  .main-ovly {
+    height: auto;
+  }
 }

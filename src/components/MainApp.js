@@ -29,13 +29,11 @@ const MainApp = () => {
 
   useEffect(() => {
     const word = getWord();
+    const num = Math.random();
+    localStorage.setItem("currRandom", num);
     setTodayWord(word);
     console.log(word);
   }, []);
-
-  useEffect(() => {
-    console.log(wrong);
-  }, [wrong]);
 
   useEffect(() => {
     if (key?.key === " ") return;
@@ -71,7 +69,6 @@ const MainApp = () => {
   }, [key]);
 
   useEffect(() => {
-    console.log(clickChar);
     if (clickChar?.char === "Back") {
       remCharString();
     } else if (clickChar?.char === "Enter") {
@@ -153,6 +150,74 @@ const MainApp = () => {
       }
 
       if (word === todayWord) {
+        let totalWin = localStorage.getItem("totalWin");
+        if (totalWin === null) {
+          totalWin = 0;
+        } else {
+          totalWin = Number.parseInt(totalWin);
+        }
+        totalWin += 1;
+        localStorage.setItem("totalWin", totalWin);
+
+        let currWin = localStorage.getItem("currWin");
+        if (currWin === null) {
+          currWin = {
+            curr1: 0,
+            curr2: 0,
+            curr3: 0,
+            curr4: 0,
+            curr5: 0,
+            curr6: 0,
+          };
+        } else {
+          currWin = JSON.parse(currWin);
+        }
+        console.log(currWin);
+
+        let currCnt;
+
+        switch (curr) {
+          case 1:
+            currCnt = currWin.curr1;
+            currCnt += 1;
+            currWin.curr1 = currCnt;
+            localStorage.setItem("currWin", JSON.stringify(currWin));
+            break;
+          case 2:
+            currCnt = currWin.curr2;
+            currCnt += 1;
+            currWin.curr2 = currCnt;
+            localStorage.setItem("currWin", JSON.stringify(currWin));
+            break;
+          case 3:
+            currCnt = currWin.curr3;
+            currCnt += 1;
+            currWin.curr3 = currCnt;
+            localStorage.setItem("currWin", JSON.stringify(currWin));
+            break;
+          case 4:
+            currCnt = currWin.curr4;
+            currCnt += 1;
+            currWin.curr4 = currCnt;
+            localStorage.setItem("currWin", JSON.stringify(currWin));
+            break;
+          case 5:
+            currCnt = currWin.curr5;
+            currCnt += 1;
+            currWin.curr5 = currCnt;
+            localStorage.setItem("currWin", JSON.stringify(currWin));
+            break;
+          case 6:
+            currCnt = currWin.curr6;
+            currCnt += 1;
+            currWin.curr6 = currCnt;
+            localStorage.setItem("currWin", JSON.stringify(currWin));
+            break;
+
+          default:
+            break;
+        }
+
         setTimeout(() => {
           alert("You guessed it correct.");
         }, 1000);
@@ -202,6 +267,7 @@ const MainApp = () => {
       case 1:
         str = input1;
         str += char;
+
         setInput1(str);
         break;
       case 2:
@@ -284,6 +350,25 @@ const MainApp = () => {
       (curr === 5 && input5.length === 5) ||
       (curr === 6 && input6.length === 5)
     ) {
+      if (
+        curr === 1 &&
+        input1.length === 5 &&
+        localStorage.getItem("currRandom") !==
+          localStorage.getItem("lastRandom")
+      ) {
+        // const num = Math.random();
+        localStorage.setItem("lastRandom", localStorage.getItem("currRandom"));
+        // localStorage.setItem("currRandom", num);
+        let totalPlayed = localStorage.getItem("totalPlayed");
+
+        if (totalPlayed === null) {
+          totalPlayed = 0;
+        } else {
+          totalPlayed = Number.parseInt(totalPlayed);
+        }
+        totalPlayed += 1;
+        localStorage.setItem("totalPlayed", totalPlayed);
+      }
       checkInput();
     }
   };

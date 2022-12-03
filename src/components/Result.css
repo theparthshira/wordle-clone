@@ -98,7 +98,7 @@
 
 progress {
   border-radius: 555px;
-  width: 80%;
+  width: 75%;
   height: 15px;
   /* box-shadow: 1px 1px; */
 }
@@ -121,4 +121,8 @@ progress::-webkit-progress-value {
 
 .play-sec {
   cursor: pointer;
+}
+
+.graph-value {
+  margin-left: 15px;
 }
