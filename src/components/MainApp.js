@@ -27,12 +27,38 @@ const MainApp = () => {
   const [mp1, setMp1] = useState({});
   const [stat, setStat] = useState(false);
 
-  useEffect(() => {
+  const nextGame = () => {
+    setCurr(1);
+    setKey(null);
+    setWrong(null);
+    setClickChar(null);
+    setMp1({});
+    setStat(false);
+    setCheck1(null);
+    setCheck2(null);
+    setCheck3(null);
+    setCheck4(null);
+    setCheck5(null);
+    setCheck6(null);
+    setInput1("");
+    setInput2("");
+    setInput3("");
+    setInput4("");
+    setInput5("");
+    setInput6("");
+    newWord();
+  };
+
+  const newWord = () => {
     const word = getWord();
     const num = Math.random();
     localStorage.setItem("currRandom", num);
     setTodayWord(word);
     console.log(word);
+  };
+
+  useEffect(() => {
+    newWord();
   }, []);
 
   useEffect(() => {
@@ -219,7 +245,7 @@ const MainApp = () => {
         }
 
         setTimeout(() => {
-          alert("You guessed it correct.");
+          setStat(true);
         }, 1000);
         setCurr(10);
       }
@@ -341,6 +367,10 @@ const MainApp = () => {
     }
   };
 
+  const statTrue = () => {
+    setStat(true);
+  };
+
   const chkCharString = () => {
     if (
       (curr === 1 && input1.length === 5) ||
@@ -432,12 +462,16 @@ const MainApp = () => {
       </div>
       <br />
       <div className="main-bot">
-        <Keyboard mp={mp1} clickChar={clickChar} setClickChar={setClickChar} />
+        <Keyboard
+          mp={mp1}
+          clickChar={clickChar}
+          setClickChar={setClickChar}
+          statTrue={setStat}
+        />
       </div>
-      <button onClick={() => setStat((prev) => !prev)}>Stats</button>
       {stat && (
         <div className="main-ovly ">
-          <Result todayWord={todayWord} />
+          <Result todayWord={todayWord} nextGame={nextGame} />
         </div>
       )}
     </div>

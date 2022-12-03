@@ -1,13 +1,18 @@
 import React from "react";
 import "./Keyboard.css";
 
-const Keyboard = ({ mp, clickChar, setClickChar }) => {
+const Keyboard = ({ mp, clickChar, setClickChar, statTrue }) => {
   const col1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const col2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const col3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
   return (
     <div>
+      <div className="col0">
+        <div onDoubleClick={() => statTrue(true)} className="col0-item">
+          Double click to reveal wordle and stats!
+        </div>
+      </div>
       <div className="col1">
         {col1.map((val, ind) => {
           const char = val.toLowerCase();

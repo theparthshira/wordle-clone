@@ -1,3 +1,21 @@
+.col0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.col0-item {
+  border: 1px rgb(207, 205, 205) solid;
+  background-color: rgb(207, 205, 205);
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .col1 {
   display: flex;
   align-items: center;

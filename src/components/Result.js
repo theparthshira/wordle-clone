@@ -1,11 +1,8 @@
 import React from "react";
 import "./Result.css";
 
-const Result = ({ todayWord }) => {
+const Result = ({ todayWord, nextGame }) => {
   const word = todayWord?.toUpperCase();
-  const nextGame = () => {
-    console.log("clicked");
-  };
 
   let currWin = localStorage.getItem("currWin");
   currWin = JSON.parse(currWin);
@@ -86,7 +83,7 @@ const Result = ({ todayWord }) => {
         </div>
       </div>
       <div className="play-main">
-        <div className="play-sec" onClick={nextGame()}>
+        <div className="play-sec" onClick={nextGame}>
           Play Again
         </div>
       </div>
