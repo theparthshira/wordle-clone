@@ -367,10 +367,6 @@ const MainApp = () => {
     }
   };
 
-  const statTrue = () => {
-    setStat(true);
-  };
-
   const chkCharString = () => {
     if (
       (curr === 1 && input1.length === 5) ||
