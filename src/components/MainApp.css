@@ -2,6 +2,24 @@
   text-align: center;
 }
 
+.error-main {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.error-name {
+  z-index: 9998;
+  padding: 6px;
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+}
+
 .box-cont {
   display: flex;
   margin-top: 10px;

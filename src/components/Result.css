@@ -121,6 +121,8 @@ progress::-webkit-progress-value {
 
 .play-sec {
   cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .graph-value {

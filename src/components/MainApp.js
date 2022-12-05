@@ -26,6 +26,7 @@ const MainApp = () => {
   const [check6, setCheck6] = useState(null);
   const [mp1, setMp1] = useState({});
   const [stat, setStat] = useState(false);
+  const [error, setError] = useState(false);
 
   const nextGame = () => {
     setCurr(1);
@@ -47,6 +48,10 @@ const MainApp = () => {
     setInput5("");
     setInput6("");
     newWord();
+  };
+
+  const closeStat = () => {
+    setStat(false);
   };
 
   const newWord = () => {
@@ -369,34 +374,56 @@ const MainApp = () => {
 
   const chkCharString = () => {
     if (
-      (curr === 1 && input1.length === 5) ||
-      (curr === 2 && input2.length === 5) ||
-      (curr === 3 && input3.length === 5) ||
-      (curr === 4 && input4.length === 5) ||
-      (curr === 5 && input5.length === 5) ||
-      (curr === 6 && input6.length === 5)
+      curr === 1 ||
+      curr === 2 ||
+      curr === 3 ||
+      curr === 4 ||
+      curr === 5 ||
+      curr === 6
     ) {
       if (
-        curr === 1 &&
-        input1.length === 5 &&
-        localStorage.getItem("currRandom") !==
-          localStorage.getItem("lastRandom")
+        input1.length === 5 ||
+        input2.length === 5 ||
+        input3.length === 5 ||
+        input4.length === 5 ||
+        input5.length === 5 ||
+        input6.length === 5
       ) {
-        // const num = Math.random();
-        localStorage.setItem("lastRandom", localStorage.getItem("currRandom"));
-        // localStorage.setItem("currRandom", num);
-        let totalPlayed = localStorage.getItem("totalPlayed");
+        if (
+          curr === 1 &&
+          input1.length === 5 &&
+          localStorage.getItem("currRandom") !==
+            localStorage.getItem("lastRandom")
+        ) {
+          // const num = Math.random();
+          localStorage.setItem(
+            "lastRandom",
+            localStorage.getItem("currRandom")
+          );
+          // localStorage.setItem("currRandom", num);
+          let totalPlayed = localStorage.getItem("totalPlayed");
 
-        if (totalPlayed === null) {
-          totalPlayed = 0;
-        } else {
-          totalPlayed = Number.parseInt(totalPlayed);
+          if (totalPlayed === null) {
+            totalPlayed = 0;
+          } else {
+            totalPlayed = Number.parseInt(totalPlayed);
+          }
+          totalPlayed += 1;
+          localStorage.setItem("totalPlayed", totalPlayed);
         }
-        totalPlayed += 1;
-        localStorage.setItem("totalPlayed", totalPlayed);
+        checkInput();
+      } else {
+        showError();
       }
-      checkInput();
     }
+  };
+
+  const showError = () => {
+    setError(true);
+
+    setTimeout(function () {
+      setError(false);
+    }, 3000);
   };
 
   return (
@@ -410,6 +437,11 @@ const MainApp = () => {
       }}
       onKeyPress={(e) => setKey(e)}
     >
+      {error && (
+        <div className="error-main">
+          <div className="error-name">NOT ENOUGH LETTERS!</div>
+        </div>
+      )}
       <div className={wrong === curr ? "main-div shake" : "main-div"}>
         <div className="word-cont">
           <Word
@@ -467,7 +499,11 @@ const MainApp = () => {
       </div>
       {stat && (
         <div className="main-ovly ">
-          <Result todayWord={todayWord} nextGame={nextGame} />
+          <Result
+            todayWord={todayWord}
+            nextGame={nextGame}
+            closeStat={closeStat}
+          />
         </div>
       )}
     </div>

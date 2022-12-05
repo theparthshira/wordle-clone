@@ -1,7 +1,7 @@
 import React from "react";
 import "./Result.css";
 
-const Result = ({ todayWord, nextGame }) => {
+const Result = ({ todayWord, nextGame, closeStat }) => {
   const word = todayWord?.toUpperCase();
 
   let currWin = localStorage.getItem("currWin");
@@ -89,6 +89,9 @@ const Result = ({ todayWord, nextGame }) => {
       <div className="play-main">
         <div className="play-sec" onClick={nextGame}>
           Play Again
+        </div>
+        <div className="play-sec" onClick={closeStat}>
+          Close
         </div>
       </div>
     </div>
