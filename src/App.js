@@ -4,7 +4,7 @@ import MainApp from "./components/MainApp";
 function App() {
   return (
     <div className="main">
-      <h1 className="heading-name">americano!</h1>
+      <h1 className="heading-name">!</h1>
       <MainApp />
     </div>
   );
