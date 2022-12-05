@@ -7,13 +7,17 @@ const Result = ({ todayWord, nextGame }) => {
   let currWin = localStorage.getItem("currWin");
   currWin = JSON.parse(currWin);
 
-  let total =
-    currWin.curr1 +
-    currWin.curr2 +
-    currWin.curr3 +
-    currWin.curr4 +
-    currWin.curr5 +
-    currWin.curr6;
+  let total = 0;
+
+  if (currWin?.curr1) {
+    total =
+      currWin.curr1 +
+      currWin.curr2 +
+      currWin.curr3 +
+      currWin.curr4 +
+      currWin.curr5 +
+      currWin.curr6;
+  }
 
   return (
     <div className="result-main">
@@ -53,33 +57,33 @@ const Result = ({ todayWord, nextGame }) => {
       <div className="graph-main">
         <div className="graph-item">
           <p className="graph-num">1</p>
-          <progress max={total} value={currWin.curr1 || 0} />
-          <p className="graph-value">{currWin.curr1 || 0}</p>
+          <progress max={total} value={currWin?.curr1 || 0} />
+          <p className="graph-value">{currWin?.curr1 || 0}</p>
         </div>
         <div className="graph-item">
           <p className="graph-num">2</p>
-          <progress max={total} value={currWin.curr2 || 0} />
-          <p className="graph-value">{currWin.curr2 || 0}</p>
+          <progress max={total} value={currWin?.curr2 || 0} />
+          <p className="graph-value">{currWin?.curr2 || 0}</p>
         </div>
         <div className="graph-item">
           <p className="graph-num">3</p>
-          <progress max={total} value={currWin.curr3 || 0} />
-          <p className="graph-value">{currWin.curr3 || 0}</p>
+          <progress max={total} value={currWin?.curr3 || 0} />
+          <p className="graph-value">{currWin?.curr3 || 0}</p>
         </div>
         <div className="graph-item">
           <p className="graph-num">4</p>
-          <progress max={total} value={currWin.curr4 || 0} />
-          <p className="graph-value">{currWin.curr4 || 0}</p>
+          <progress max={total} value={currWin?.curr4 || 0} />
+          <p className="graph-value">{currWin?.curr4 || 0}</p>
         </div>
         <div className="graph-item">
           <p className="graph-num">5</p>
-          <progress max={total} value={currWin.curr5 || 0} />
-          <p className="graph-value">{currWin.curr5 || 0}</p>
+          <progress max={total} value={currWin?.curr5 || 0} />
+          <p className="graph-value">{currWin?.curr5 || 0}</p>
         </div>
         <div className="graph-item">
           <p className="graph-num">6</p>
-          <progress max={total} value={currWin.curr6 || 0} />
-          <p className="graph-value">{currWin.curr6 || 0}</p>
+          <progress max={total} value={currWin?.curr6 || 0} />
+          <p className="graph-value">{currWin?.curr6 || 0}</p>
         </div>
       </div>
       <div className="play-main">
