@@ -374,47 +374,43 @@ const MainApp = () => {
 
   const chkCharString = () => {
     if (
-      curr === 1 ||
-      curr === 2 ||
-      curr === 3 ||
-      curr === 4 ||
-      curr === 5 ||
-      curr === 6
+      (curr === 1 && input1.length === 5) ||
+      (curr === 2 && input2.length === 5) ||
+      (curr === 3 && input3.length === 5) ||
+      (curr === 4 && input4.length === 5) ||
+      (curr === 5 && input5.length === 5) ||
+      (curr === 6 && input6.length === 5)
     ) {
       if (
-        input1.length === 5 ||
-        input2.length === 5 ||
-        input3.length === 5 ||
-        input4.length === 5 ||
-        input5.length === 5 ||
-        input6.length === 5
+        curr === 1 &&
+        input1.length === 5 &&
+        localStorage.getItem("currRandom") !==
+          localStorage.getItem("lastRandom")
       ) {
-        if (
-          curr === 1 &&
-          input1.length === 5 &&
-          localStorage.getItem("currRandom") !==
-            localStorage.getItem("lastRandom")
-        ) {
-          // const num = Math.random();
-          localStorage.setItem(
-            "lastRandom",
-            localStorage.getItem("currRandom")
-          );
-          // localStorage.setItem("currRandom", num);
-          let totalPlayed = localStorage.getItem("totalPlayed");
+        // const num = Math.random();
+        localStorage.setItem("lastRandom", localStorage.getItem("currRandom"));
+        // localStorage.setItem("currRandom", num);
+        let totalPlayed = localStorage.getItem("totalPlayed");
 
-          if (totalPlayed === null) {
-            totalPlayed = 0;
-          } else {
-            totalPlayed = Number.parseInt(totalPlayed);
-          }
-          totalPlayed += 1;
-          localStorage.setItem("totalPlayed", totalPlayed);
+        if (totalPlayed === null) {
+          totalPlayed = 0;
+        } else {
+          totalPlayed = Number.parseInt(totalPlayed);
         }
-        checkInput();
-      } else {
-        showError();
+        totalPlayed += 1;
+        localStorage.setItem("totalPlayed", totalPlayed);
       }
+      checkInput();
+    } else if (
+      curr <= 6 &&
+      (input1.length !== 5 ||
+        input2.length !== 5 ||
+        input3.length !== 5 ||
+        input4.length !== 5 ||
+        input5.length !== 5 ||
+        input6.length !== 5)
+    ) {
+      showError();
     }
   };
 
